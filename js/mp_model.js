@@ -363,44 +363,44 @@ $(document).ready(function () {
         
         // The unemployment transition path
 
-        var showTransit = document.getElementById('yesTransit').checked
+        // var showTransit = document.getElementById('yesTransit').checked
 
-        var chart_transition = Highcharts.chart('unemployment_transition', {
+        // var chart_transition = Highcharts.chart('unemployment_transition', {
 
-            title: {
-                useHTML: true,
-                text: 'Unemployment Rate Transition Path',
-                x: -20 //center
-            },
-            subtitle: {
-                useHTML: true,
-                text: '',
-            },
-            plotOptions: {
-                line: {
-                    marker: {
-                        enabled: true,
-                        // symbol:
-                    }
-                },
-                series: {
-                    states: {
-                        hover: {
-                            enabled: false
-                        }
-                    }
-                }
-            },
-            tooltip: { 
-                enabled: false
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            }
-        });
+        //     title: {
+        //         useHTML: true,
+        //         text: 'Unemployment Rate Transition Path',
+        //         x: -20 //center
+        //     },
+        //     subtitle: {
+        //         useHTML: true,
+        //         text: '',
+        //     },
+        //     plotOptions: {
+        //         line: {
+        //             marker: {
+        //                 enabled: true,
+        //                 // symbol:
+        //             }
+        //         },
+        //         series: {
+        //             states: {
+        //                 hover: {
+        //                     enabled: false
+        //                 }
+        //             }
+        //         }
+        //     },
+        //     tooltip: { 
+        //         enabled: false
+        //     },
+        //     legend: {
+        //         layout: 'vertical',
+        //         align: 'right',
+        //         verticalAlign: 'middle',
+        //         borderWidth: 0
+        //     }
+        // });
 
 
         // What happens when the form is submitted
