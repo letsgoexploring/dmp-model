@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="favicon/mstile-310x310.png" />
+
+    
+    <meta charset="utf-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>MP model of the Labor Market</title>
+
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link href="css/app.css" type="text/css" rel="stylesheet" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="js/mp_model.js"></script>
+    <script src="http://highslide-software.github.io/export-csv/export-csv.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-55835941-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </head>
+  <body>
+    
+    <div class="row">
+      <div class="large-3 columns">
+      </div>
+      <div class="large-9 columns">
+        <ul class="button-group right">
+          <li><a href="http://www.briancjenkins.com" class="button">Brian C Jenkins</a></li>
+          <li><a href="http://www.briancjenkins.com/teaching" class="button">Teaching</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>The MP Model of the Labor Market</h1>
+        <hr>
+      </div>
+    </div>
+ 
+
+  <div class="row">
+    <div class="large-12 columns">
+      <h4>Background</h4>
+      <p>The simulation is based on the transition equation for the unemployment rate:
+        $$u_{t+1}  = (1 - A\sqrt{\theta_t} - \lambda) u_t + \lambda,$$
+      the vacancy supply equation:
+        $$\theta_t  = \left[\frac{A}{\kappa}\left( \frac{y-w_t}{\lambda}\right) \right]^2,$$
+      and wage setting equations:
+        $$w_t  = \beta y + (1-\beta) b + \beta \kappa \theta_t.$$
+      Note that the last two equations imply that \(w_t\) and \(\theta\) are effectively static functions of model parameters and that they are always equal to their steady state values. This means that in response to a one-time permanent change in any of the model parameters, \(w\) and \(\theta\) jump immediately to their new steady state values while the unemployment rate smoothly transitions to its new steady state values. Furthermore, the transition equation for the unemploymet rate determines the steady state relationship between the unemployment rate and market tightness:
+        $$
+        u = \frac{\lambda}{A\sqrt{\theta} + \lambda}
+        $$
+      We call this last expression the modified Beveridge curve.
+
+
+  <div class="row">
+    <div class="large-12 columns">
+
+      <h4>Simulation Tool</h4>
+
+      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model parameters. The toll will also generate a transition path for the unemploment rate to show how the unemployment rate adjusts over time.</p>
+
+      <!-- <form id="Options"> -->
+      <form action="" method="post" id="Options">
+        <fieldset>
+          <legend>Simulation settings</legend>
+          <div class="row">
+            <div class="large-5 columns">
+              <label><strong>Choose parameter to change:</strong></label>
+              <input type="radio" name="whichParam" value="y" id="yParam" ><label for="yParam">\(y\)</label>
+              <input type="radio" name="whichParam" value="a" id="aParam"><label for="aParam">\(A\)</label>
+              <input type="radio" name="whichParam" value="kappa" id="kappaParam"><label for="kappaParam">\(\kappa\)</label>
+              <input type="radio" name="whichParam" value="beta" id="betaParam"><label for="betaParam">\(\beta\)</label>
+              <input type="radio" name="whichParam" value="b" id="bParam"><label for="bParam">\(b\)</label>
+              <input type="radio" name="whichParam" value="lambda" id="lambdaParam"><label for="lambdaParam">\(\lambda\)</label>
+            </div>
+          <!-- </div> -->
+
+          <!-- <div class="row"> -->
+            <div class="large-3 columns">
+              <label><strong>Direction of change:</strong></label>
+              <input type="radio" name="paramDirection" value="up" id="upParam" checked><label for="upParam">Increase</label>
+              <input type="radio" name="paramDirection" value="down" id="downParam"><label for="downParam">Decrease</label>
+            </div>
+
+            <div class="large-3 columns">
+              <label><strong>Unemployment transition:</strong></label>
+              <input type="radio" name="showTransit" value="yes" id="yesTransit"><label for="yesTransit">Yes</label>
+              <input type="radio" name="showTransit" value="no" id="noTransit" checked><label for="noTransit">No</label>
+            </div>
+          </div>
+
+        </fieldset>
+
+
+        <div class="large-3 columns">
+          <button type="submit" class="small button" onclick="">Submit</button>  
+        </div>
+          <!-- <button type="submit" class="small button" onclick="window.location.href='#plotBox'">Submit</button>  
+        </div> -->
+        <div class="large-3 columns">
+          <button type="reload" class="small button" onclick="reloadFunction()">Reset</button>
+        </div>
+        <div class="large-4 columns">
+          &nbsp;
+        </div>
+      </form>
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+  <div class="plotBox" id ="plotBox">
+    <div class="column12">
+      <div id="beveridge_curve" class="plot"></div>
+    </div>
+    <div class="column12">
+      <div id="ws_vs_curves" class="plot"></div>
+    </div>
+
+  </div>
+  </div>
+  <div class="row">
+  <div class="plotBox" id ="plotBox">
+    <div class="column11">
+      <div id="unemployment_transition" class="plot"></div>
+    </div>
+    
+  </div>
+  </div>
+
+  <!-- <form action="" method="post">
+    First Name: <input placeholder="First Name" type="text" name="firstname" maxlength="12" size="12"/> <br/><br/>
+    Gender:<br/>
+    Male:<input type="radio" name="gender" value="Male"/><br/>
+    Female:<input type="radio" name="gender" value="Female"/><br/><br/>
+ 
+    Favorite Food:<br/>
+    Steak:<input type="checkbox" name="food[]" value="Steak"/><br/>
+    Pizza:<input type="checkbox" name="food[]" value="Pizza"/><br/>
+    Chicken:<input type="checkbox" name="food[]" value="Chicken"/><br/><br/>
+ 
+    <textarea wrap="physical" cols="20" name="quote" rows="5" placeholder="message"></textarea><br/><br>
+ 
+    Select a Level of Education:<br/>
+    <select name="education">
+    <option value="Jr.High">Jr.High</option>
+    <option value="HighSchool">HighSchool</option>
+    <option value="College">College</option></select><br/>
+    <p><input type="submit" /></p>
+</form>
+ 
+<h2>JSON</h2>
+<pre id="result"></pre> -->
+ 
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-12 columns">
+          <p>Created by <a href="http://www.briancjenkins.com">Brian C Jenkins</a>, Arghya Bhattacharya, and Paul Jackson of the Department of Economics, UC Irvine. Please send feedback to Brian by <a href="mailto:bcjenkin@uci.edu">email.</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+  </body>
+</html>
