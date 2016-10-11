@@ -91,14 +91,14 @@
 
       <h4>Simulation Tool</h4>
 
-      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model parameters. The toll will also generate a transition path for the unemploment rate to show how the unemployment rate adjusts over time.</p>
+      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model parameters. <!-- The tool will also generate a transition path for the unemploment rate to show how the unemployment rate adjusts over time. --></p>
 
       <!-- <form id="Options"> -->
       <form action="" method="post" id="Options">
         <fieldset>
           <legend>Simulation settings</legend>
           <div class="row">
-            <div class="large-5 columns">
+            <div class="large-6 columns">
               <label><strong>Choose parameter to change:</strong></label>
               <input type="radio" name="whichParam" value="y" id="yParam" ><label for="yParam">\(y\)</label>
               <input type="radio" name="whichParam" value="a" id="aParam"><label for="aParam">\(A\)</label>
@@ -110,17 +110,17 @@
           <!-- </div> -->
 
           <!-- <div class="row"> -->
-            <div class="large-3 columns">
+            <div class="large-6 columns">
               <label><strong>Direction of change:</strong></label>
               <input type="radio" name="paramDirection" value="up" id="upParam" checked><label for="upParam">Increase</label>
               <input type="radio" name="paramDirection" value="down" id="downParam"><label for="downParam">Decrease</label>
             </div>
 
-            <div class="large-3 columns">
+            <!-- <div class="large-3 columns">
               <label><strong>Unemployment transition:</strong></label>
               <input type="radio" name="showTransit" value="yes" id="yesTransit"><label for="yesTransit">Yes</label>
               <input type="radio" name="showTransit" value="no" id="noTransit" checked><label for="noTransit">No</label>
-            </div>
+            </div> -->
           </div>
 
         </fieldset>
@@ -152,38 +152,16 @@
 
   </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
   <div class="plotBox" id ="plotBox">
     <div class="column11">
       <div id="unemployment_transition" class="plot"></div>
-    </div>
+    </div> -->
     
   </div>
   </div>
 
-  <!-- <form action="" method="post">
-    First Name: <input placeholder="First Name" type="text" name="firstname" maxlength="12" size="12"/> <br/><br/>
-    Gender:<br/>
-    Male:<input type="radio" name="gender" value="Male"/><br/>
-    Female:<input type="radio" name="gender" value="Female"/><br/><br/>
- 
-    Favorite Food:<br/>
-    Steak:<input type="checkbox" name="food[]" value="Steak"/><br/>
-    Pizza:<input type="checkbox" name="food[]" value="Pizza"/><br/>
-    Chicken:<input type="checkbox" name="food[]" value="Chicken"/><br/><br/>
- 
-    <textarea wrap="physical" cols="20" name="quote" rows="5" placeholder="message"></textarea><br/><br>
- 
-    Select a Level of Education:<br/>
-    <select name="education">
-    <option value="Jr.High">Jr.High</option>
-    <option value="HighSchool">HighSchool</option>
-    <option value="College">College</option></select><br/>
-    <p><input type="submit" /></p>
-</form>
- 
-<h2>JSON</h2>
-<pre id="result"></pre> -->
+
  
   <footer class="row">
     <div class="large-12 columns">
