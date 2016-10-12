@@ -216,7 +216,7 @@ $(document).ready(function () {
                 showInLegend: false,   
                 marker: {
                     enabled: true,
-                    radius: 5,
+                    radius: 4,
                     symbol: 'circle'
                 },
                 color: '#434348',
@@ -369,7 +369,7 @@ $(document).ready(function () {
                 animation: false,
                 showInLegend: false,   
                 marker: {
-                    radius: 5,
+                    radius: 4,
                     symbol: 'circle'
                 },
                 color: '#434348',
@@ -493,8 +493,7 @@ $(document).ready(function () {
 
                 var lambdaPrime = lambda;
                 var aPrime = a;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
             }
 
             // A reduction in y
@@ -557,8 +556,7 @@ $(document).ready(function () {
 
                 var lambdaPrime = lambda;
                 var aPrime = a;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
 
@@ -623,8 +621,7 @@ $(document).ready(function () {
 
                 var lambdaPrime = lambda;
                 var aPrime = a_plus;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
 
@@ -688,8 +685,7 @@ $(document).ready(function () {
 
                 var lambdaPrime = lambda;
                 var aPrime = a_minus;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
 
@@ -949,9 +945,6 @@ $(document).ready(function () {
 
                 var lambdaPrime = lambda;
                 var aPrime = a;
-
-                var lambdaPrime = lambda;
-                var aPrime = a;
                 unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
@@ -1019,8 +1012,7 @@ $(document).ready(function () {
 
                 var lambdaPrime = lambda;
                 var aPrime = a;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
 
@@ -1078,8 +1070,6 @@ $(document).ready(function () {
                 var update_bc = false
                 var update_ws = true
                 var update_vs = false
-                
-
 
                 
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
@@ -1087,8 +1077,7 @@ $(document).ready(function () {
 
                 var lambdaPrime = lambda;
                 var aPrime = a;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
 
@@ -1147,16 +1136,12 @@ $(document).ready(function () {
                 var update_ws = false
                 var update_vs = true
                 
-
-
-                
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
                 var lambdaPrime = lambda_plus;
                 var aPrime = a;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
 
@@ -1215,16 +1200,12 @@ $(document).ready(function () {
                 var update_ws = false
                 var update_vs = true
                 
-
-
-                
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
                 var lambdaPrime = lambda_minus;
                 var aPrime = a;
-
-                // unempTransit(showTransit,chart_transition,periods,t0,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos,subtitle)
+                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
 
             }
 
@@ -1416,7 +1397,7 @@ var updateChart = function (update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,t
         showInLegend: false,   
         marker: {
             enabled: true,
-            radius: 5,
+            radius: 4,
             symbol: 'circle'
         },
         color: '#434348',
@@ -1436,7 +1417,7 @@ var updateChart = function (update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,t
         animation: false,
         showInLegend: false,   
         marker: {
-            radius: 5,
+            radius: 4,
             symbol: 'circle'
         },
         color: '#434348',
@@ -1457,139 +1438,65 @@ var updateChart = function (update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,t
 var unempTransit = function (chart_bc,periods,a,a_new,lambda,lambda_new,u_labels,u_range,u_tick_pos,theta_tick_pos) {
 
     var tme=[0];
-    var uProc = [u_tick_pos[0],u_tick_pos[0]];
-    var thetaProc = [theta_tick_pos[0]];
+    var uProc = [u_tick_pos[0]];
+    var thetaProc = [theta_tick_pos[1]];
     var thet = theta_tick_pos[0];
     var uPrime = 0;
 
     var umin = Math.min(u_tick_pos[0],u_tick_pos[1])
     var umax = Math.max(u_tick_pos[0],u_tick_pos[1])
-    
+
+
+    var rho = 0.5;
+
     periods = 5;
     t0 = -1;
+
+
+
     for (i = 1; i <= periods; i++) {
-
-        if (i<=t0) {
-            thet = theta_tick_pos[0];
-            uPrime = (1 - a*Math.sqrt(thet) - lambda)*uProc[uProc.length-1] + lambda;
-            
-        } else {
-
-            thet = theta_tick_pos[1];
-            uPrime = (1 - a_new*Math.sqrt(thet) - lambda_new)*uProc[uProc.length-1] + lambda_new;
-        }
-        
-        tme.push(i);
-
-        uProc.push(uPrime);
-        thetaProc.push(thet);
+        uProc.push( (1-rho)*u_tick_pos[1] +rho*uProc[uProc.length-1] );
+        thetaProc.push(theta_tick_pos[1])
     }
 
-    uProc.pop()
-    uProc = uProc.reverse()
-    thetaProc = thetaProc.reverse()
-
-    // if (uProc[0]> uProc[uProc.length-1]) {
-    //     uProc = uProc.reverse()
-    //     thetaProc = thetaProc.reverse()
-    // }
-
+    console.log(uProc)
+    console.log(thetaProc)
 
     
-    // var updateSeries = function(chart_bc,uProc,thetaProc,i) {
-    //     var x = uProc[i];
-    //     var y = thetaProc[i];
-    //     chart_bc.series[1].addPoint([x, y],true,false,false);
-    // }
 
 
-    // (function(){
-    //     updateSeries(chart_bc,uProc,thetaProc,i)
-    //     setTimeout('consol', 60000);
-    // })();
-
-
-    // for (i = 0; i <= uProc.length - 1; i++) {
-    //     updateSeries(chart_bc,uProc,thetaProc,i);
-    //     setTimeout(console.log(i), 10000);
-    // }
-
-
-    // var i = 0;                     //  set your counter to 1
-
-    // function myLoop () {           //  create a loop function
-    //     setTimeout(function () {    //  call a 3s setTimeout when the loop is called
-    //         var x = uProc[i];
-    //         var y = thetaProc[i];
-    //         chart_bc.series[1].addPoint([x, y],true,false,false);          //  your code here
-    //         console.log(x,y)
-    //         i++;                     //  increment the counter
-    //         if (i <= uProc.length - 1) {            //  if the counter < 10, call the loop function
-    //             myLoop();             //  ..  again which will trigger another 
-    //         }                        //  ..  setTimeout()
-    //     }, 1000)
-    // }
-
-    // myLoop()
-
-
-
-
-
-
-
-    // for (i = 0; i <= uProc.length - 1; i++) {
-    //     var x = uProc[i];
-    //     var y = thetaProc[i];
-    //     chart_bc.series[1].addPoint([x, y],true,false,false);
-    //     // series.addPoint(, true, false);
-
-    //     console.log(x,y)
-
-    // }
-    var x = uProc[1];
-    var y = thetaProc[1];
-    chart_bc.series[1].addPoint([x, y],true,false,false);
-
-    console.log(x,y)
-    console.log(u_tick_pos)
-    console.log(theta_tick_pos)
-
-    chart_bc.addSeries({                        
-        type: 'line',
-        // animation: {
-        //     duration: 10000
-        // },
-        animation: false,
-        showInLegend: false,   
-        marker: {
-            enabled: true,
-            radius: 5,
-            symbol: 'circle'
-        },
-        color: '#434348',
-        data: (function() {
-                var data = [];
-                for (i = 1; i <= 1; i++) {
-                    data.push({
-                        x: uProc[i],
-                        y: thetaProc[i],
-                    })
-                }
-
-                return data;
-            })()
-    });
-
-
-    var i = 2;                     //  set your counter to 1
+    var i = 0;                     //  set your counter to 1
 
     function myLoop () {           //  create a loop function
         setTimeout(function () {    //  call a 3s setTimeout when the loop is called
             var x = uProc[i];
             var y = thetaProc[i];
-            chart_bc.series[3].addPoint([x, y],true,false,false);          //  your code here
-            console.log(x,y)
+            if (i ==0){
+                chart_bc.addSeries({                        
+                    type: 'scatter',
+                    animation: false,
+                    showInLegend: false,   
+                    marker: {
+                        radius: 4,
+                        symbol: 'circle'
+                    },
+                    color: '#434348',
+                    data: (function() {
+                            var data = [];
+                                data.push({
+                                    x: uProc[i],
+                                    y: thetaProc[i],
+                                })
+
+                            return data;
+                        })()
+                });
+
+            } else {
+                chart_bc.series[chart_bc.series.length-1].addPoint([x, y],true,false,false);          //  your code here
+            }
+            
+            // console.log(x,y)
             i++;                     //  increment the counter
             if (i <= uProc.length - 1) {            //  if the counter < 10, call the loop function
                 myLoop();             //  ..  again which will trigger another 
@@ -1598,61 +1505,6 @@ var unempTransit = function (chart_bc,periods,a,a_new,lambda,lambda_new,u_labels
     }
 
     myLoop()
-
-
-
-
-    // }
-
-    
-
-    // chart_bc.addSeries({                        
-    //     type: 'scatter',
-    //     animation: 
-    //         {
-    //             duration: 2750
-    //         },
-    //     showInLegend: false,   
-    //     marker: {
-    //         enabled: true,
-    //         radius: 5,
-    //         symbol: 'circle'
-    //     },
-    //     color: '#90ed7d',
-    //     events: {
-    //         load: function () {
-
-    //             // set up the updating of the chart each second
-    //             var series = this.series[0];
-    //             for (i = 0; i <= uProc.length - 1; i++) {
-    //                 var x = uProc[i];
-    //                 var y = thetaProc[i];
-    //                 series.addPoint([x, y], true, false);
-
-    //             console.log('fuckthis')
-    //             }
-
-
-
-    //             // setInterval(function () {
-    //             //     var x = (new Date()).getTime(), // current time
-    //             //         y = Math.random();
-    //             //     series.addPoint([x, y], true, false);
-    //             // }, 100);
-    //         }
-    //     },
-    //     data: (function() {
-    //             var data = [];
-    //                 // for (i = 0; i <= uProc.length - 1; i++) {
-    //             data.push({
-    //                 x: uProc[0],
-    //                 y: thetaProc[0],
-    //             })
-    //                 // }
-
-    //             return data;
-    //         })()
-    // });
 
 }
 
@@ -1740,7 +1592,7 @@ var unempTransit = function (chart_bc,periods,a,a_new,lambda,lambda_new,u_labels
 //                 },
 //             showInLegend: false,   
 //             marker: {
-//                 radius: 5,
+//                 radius: 4,
 //                 symbol: 'circle'
 //             },
 //             color: '#434348',
