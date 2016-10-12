@@ -504,6 +504,8 @@ $(document).ready(function () {
                         var aPrime = a;
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
+
+                    submitted +=1
                 }
 
                 // A reduction in y
@@ -569,6 +571,8 @@ $(document).ready(function () {
                         var aPrime = a;
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
+
+                    submitted +=1
 
                 }
 
@@ -637,6 +641,8 @@ $(document).ready(function () {
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
 
+                    submitted +=1
+
                 }
 
                 // A reduction in A
@@ -702,6 +708,8 @@ $(document).ready(function () {
                         var aPrime = a;
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
+
+                    submitted +=1
 
                 }
 
@@ -770,6 +778,8 @@ $(document).ready(function () {
                         var aPrime = a;
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
+
+                    submitted +=1
                 }
 
                 // A reduction in kappa
@@ -835,6 +845,8 @@ $(document).ready(function () {
                         var aPrime = a;
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
+
+                    submitted +=1
 
                 }
 
@@ -905,6 +917,8 @@ $(document).ready(function () {
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
 
+                    submitted +=1
+
                 }
 
                 // A reduction in beta β
@@ -970,6 +984,8 @@ $(document).ready(function () {
                         var aPrime = a;
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
+
+                    submitted +=1
 
                 }
 
@@ -1040,6 +1056,8 @@ $(document).ready(function () {
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
 
+                    submitted +=1
+
                 }
 
                 // A reduction in b
@@ -1107,6 +1125,8 @@ $(document).ready(function () {
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
 
+                    submitted +=1
+
                 }
 
                 // An increase in lambda λ
@@ -1172,6 +1192,8 @@ $(document).ready(function () {
                         var aPrime = a;
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
+
+                    submitted +=1
 
                 }
 
@@ -1239,9 +1261,10 @@ $(document).ready(function () {
                         unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
                     }
 
+                    submitted +=1
+
                 }
             }
-        submitted +=1
         })
 
     });
