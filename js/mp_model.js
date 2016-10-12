@@ -495,7 +495,6 @@ $(document).ready(function () {
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
                 if (showTransit) {
-                    console.log('fuckthis')
                     var lambdaPrime = lambda;
                     var aPrime = a;
                     unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
