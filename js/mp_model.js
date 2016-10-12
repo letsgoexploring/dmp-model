@@ -79,10 +79,6 @@ $(document).ready(function () {
     var w_tick_pos = [0.90705];
     var w_range = [0.85,0.98];
 
-    // Show the unemployment transition?
-    var showTransit = document.getElementById('yesTransit').checked
-
-
 
     // Construct the data for the initial BC representation
     for (i = 2; i < N; i++) {
@@ -434,6 +430,10 @@ $(document).ready(function () {
         // What happens when the form is submitted
         $('#Options').on('submit', function (e) {
 
+            // Show the unemployment transition?
+            var showTransit = document.getElementById('yesTransit').checked
+            console.log(showTransit)
+
 
             // An increase in y
             if (document.getElementById('yParam').checked && document.getElementById('upParam').checked) {
@@ -495,6 +495,7 @@ $(document).ready(function () {
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
                 if (showTransit) {
+                    console.log('fuckthis')
                     var lambdaPrime = lambda;
                     var aPrime = a;
                     unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
