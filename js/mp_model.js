@@ -79,6 +79,9 @@ $(document).ready(function () {
     var w_tick_pos = [0.90705];
     var w_range = [0.85,0.98];
 
+    // Show the unemployment transition?
+    var showTransit = document.getElementById('yesTransit').checked
+
 
 
     // Construct the data for the initial BC representation
@@ -491,9 +494,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
             }
 
             // A reduction in y
@@ -554,9 +559,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -619,9 +626,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a_plus;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -683,9 +692,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a_minus;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -749,9 +760,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
             }
 
             // A reduction in kappa
@@ -812,9 +825,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -879,9 +894,11 @@ $(document).ready(function () {
                 var lambdaPrime = lambda;
                 var aPrime = a;
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -943,9 +960,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -1010,9 +1029,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -1075,9 +1096,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -1139,9 +1162,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda_plus;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -1203,9 +1228,11 @@ $(document).ready(function () {
                 updateChart(update_bc,update_ws,update_vs,chart_bc,chart_ws_vs,theta_labels,u_labels,w_labels,u_bc,theta_bc_new,w_ws_vs,theta_vs_new,theta_ws_new,
                     theta_tick_pos,u_tick_pos,w_tick_pos,theta_range,u_range,w_range,subtitle)
 
-                var lambdaPrime = lambda_minus;
-                var aPrime = a;
-                unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                if (showTransit) {
+                    var lambdaPrime = lambda;
+                    var aPrime = a;
+                    unempTransit(chart_bc,periods,a,aPrime,lambda,lambdaPrime,u_labels,u_range,u_tick_pos,theta_tick_pos)
+                }
 
             }
 
@@ -1449,38 +1476,61 @@ var unempTransit = function (chart_bc,periods,a,a_new,lambda,lambda_new,u_labels
 
     var rho = 0.5;
 
-    periods = 5;
+    periods = 10;
     t0 = -1;
 
-
-
+    // Simulate unemployment rate
     for (i = 1; i <= periods; i++) {
         uProc.push( (1-rho)*u_tick_pos[1] +rho*uProc[uProc.length-1] );
         thetaProc.push(theta_tick_pos[1])
     }
 
-    console.log(uProc)
-    console.log(thetaProc)
+    // console.log(uProc)
+    // console.log(thetaProc)
 
-    
+    var i = 0;                      //  set counter to 0
 
-
-    var i = 0;                     //  set your counter to 1
-
-    function myLoop () {           //  create a loop function
+    function myLoop () {            //  create a loop function
         setTimeout(function () {    //  call a 3s setTimeout when the loop is called
             var x = uProc[i];
             var y = thetaProc[i];
             if (i ==0){
                 chart_bc.addSeries({                        
-                    type: 'scatter',
+                    type: 'line',
                     animation: false,
+                    lineWidth: 2,
                     showInLegend: false,   
                     marker: {
+                        enabled: true,
                         radius: 4,
                         symbol: 'circle'
                     },
-                    color: '#434348',
+                    color: '#f15c80',
+                    data: (function() {
+                            var data = [];
+                                data.push({
+                                    x: u_tick_pos[0],
+                                    y: theta_tick_pos[0],
+                                });
+                                data.push({
+                                    x: u_tick_pos[0],
+                                    y: theta_tick_pos[1],
+                                })
+
+                            return data;
+                        })()
+                });
+                chart_bc.addSeries({                        
+                    type: 'line',
+                    animation: false,
+                    lineWidth: 2,
+                    showInLegend: false,   
+                    marker: {
+                        enabled: true,
+                        radius: 4,
+                        symbol: 'circle'
+                    },
+                    color: '#f15c80',
                     data: (function() {
                             var data = [];
                                 data.push({
