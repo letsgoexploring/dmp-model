@@ -26,7 +26,8 @@
     
     <meta charset="utf-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-    <title>MP model of the Labor Market</title>
+    <title>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching
+Mortensen-Pissarides</title>
 
     <link rel="stylesheet" href="css/foundation.css" />
     <link href="css/app.css" type="text/css" rel="stylesheet" />
@@ -62,9 +63,16 @@
       </div>
     </div>
 
+    <!-- <div class="row">
+      <div class="large-12 columns">
+        <h3><em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching
+Mortensen-Pissarides</em></h3>
+        <hr>
+      </div>
+    </div> -->
     <div class="row">
       <div class="large-12 columns">
-        <h1>The MP Model of the Labor Market</h1>
+        <h3>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Mortensen-Pissarides</em></h3>
         <hr>
       </div>
     </div>
@@ -72,93 +80,42 @@
 
   <div class="row">
     <div class="large-12 columns">
-      <h4>Background</h4>
-      <p>The simulation is based on the transition equation for the unemployment rate:
-        $$u_{t+1}  = (1 - A\sqrt{\theta_t} - \lambda) u_t + \lambda,$$
-      the vacancy supply equation:
-        $$\theta_t  = \left[\frac{A}{\kappa}\left( \frac{y-w_t}{\lambda}\right) \right]^2,$$
-      and wage setting equations:
-        $$w_t  = \beta y + (1-\beta) b + \beta \kappa \theta_t.$$
-      Note that the last two equations imply that \(w_t\) and \(\theta\) are effectively static functions of model parameters and that they are always equal to their steady state values. This means that in response to a one-time permanent change in any of the model parameters, \(w\) and \(\theta\) jump immediately to their new steady state values while the unemployment rate smoothly transitions to its new steady state values. Furthermore, the transition equation for the unemploymet rate determines the steady state relationship between the unemployment rate and market tightness:
-        $$
-        u = \frac{\lambda}{A\sqrt{\theta} + \lambda}
-        $$
-      We call this last expression the modified Beveridge curve.
 
+      <!-- <h4>Resources for <em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Mortensen-Pissarides</em></h4> -->
+      <h4>About</h4>
+      <p>This page contains resources to accompany the paper <em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Mortensen-Pissarides</em> by Arghya Bhattacharya, Paul Jackson, and <a href="http://www.briancjenkins.com">Brian C Jenkins</a>. In our paper, we present a simplified version of the Mortensen and Pissarides (1994) model of unemployment that is accessible to undergraduates and preserves the dynamic structure of the original model. For brevity, we refer presentation of the Mortensen and Pissarides model as the <em>MP model</em>.</p>
+
+      <p>Below you will find a link to Beveridge curve data for the US, Python code used to produce the dataset, some sample homework problems based on the Beveridge curve data, and a link to a web-based tool that students can use to analyze equilibrium in the MP model.</p>
+    
+    </div>
+  </div>
 
   <div class="row">
     <div class="large-12 columns">
 
-      <h4>Simulation Tool</h4>
+      <h4>Data</h4>
+      <p>In Figure 3 of our paper, we present the following plot of Beveridge curve data for the US:</p>
 
-      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model parameters. <!-- The tool will also generate a transition path for the unemploment rate to show how the unemployment rate adjusts over time. --></p>
-
-      <!-- <form id="Options"> -->
-      <form action="" method="post" id="Options">
-        <fieldset>
-          <legend>Simulation settings</legend>
-          <div class="row">
-            <div class="large-5 columns">
-              <label><strong>Choose parameter to change:</strong></label>
-              <input type="radio" name="whichParam" value="y" id="yParam" ><label for="yParam">\(y\)</label>
-              <input type="radio" name="whichParam" value="a" id="aParam"><label for="aParam">\(A\)</label>
-              <input type="radio" name="whichParam" value="kappa" id="kappaParam"><label for="kappaParam">\(\kappa\)</label>
-              <input type="radio" name="whichParam" value="beta" id="betaParam"><label for="betaParam">\(\beta\)</label>
-              <input type="radio" name="whichParam" value="b" id="bParam"><label for="bParam">\(b\)</label>
-              <input type="radio" name="whichParam" value="lambda" id="lambdaParam"><label for="lambdaParam">\(\lambda\)</label>
-            </div>
-          <!-- </div> -->
-
-          <!-- <div class="row"> -->
-            <div class="large-3 columns">
-              <label><strong>Direction of change:</strong></label>
-              <input type="radio" name="paramDirection" value="up" id="upParam" checked><label for="upParam">Increase</label>
-              <input type="radio" name="paramDirection" value="down" id="downParam"><label for="downParam">Decrease</label>
-            </div>
-
-            <div class="large-4 columns">
-              <label><strong>Show unemployment transition:</strong></label>
-              <input type="radio" name="showTransit" value="yes" id="yesTransit"><label for="yesTransit">Yes</label>
-              <input type="radio" name="showTransit" value="no" id="noTransit" checked><label for="noTransit">No</label>
-            </div>
-          </div>
-
-        </fieldset>
+      <div class="twelve columns text-center">
+        <a href="img/fig_modified_beveridge_curve.png"><img src="img/fig_modified_beveridge_curve.png"style="width: 50%; height: 50%"/></a>
+      </div>
 
 
-        <div class="large-3 columns">
-          <button type="submit" class="small button" onclick="">Submit</button>  
-        </div>
-          <!-- <button type="submit" class="small button" onclick="window.location.href='#plotBox'">Submit</button>  
-        </div> -->
-        <div class="large-3 columns">
-          <button type="reload" class="small button" onclick="reloadFunction()">Reset</button>
-        </div>
-        <div class="large-4 columns">
-          &nbsp;
-        </div>
-      </form>
-      <hr/>
-    </div>
-  </div>
-  <div class="row">
-  <div class="plotBox" id ="plotBox">
-    <div class="column12">
-      <div id="beveridge_curve" class="plot"></div>
-    </div>
-    <div class="column12">
-      <div id="ws_vs_curves" class="plot"></div>
-    </div>
+      <p>The figure is a plot of labor market tightness against the unemployment rate for the US for each month from April 1929 through August 2016. <em>Market tightness</em> is the ratio of job vacancies to unemployed persons. The downward-sloping relationship between market tightness and the unemployment rate is a key prediction of the MP model and this figure provides important empirical justification for the model.</p>
 
-  </div>
-  </div>
-  <!-- <div class="row">
-  <div class="plotBox" id ="plotBox">
-    <div class="column11">
-      <div id="unemployment_transition" class="plot"></div>
-    </div> -->
+      <p>
+
+        <ul>
+          <li>Data: <a href="data/beveridge_curve_data.csv">csv formatted</a> and <a href="data/beveridge_curve_data.xslx">Excel formatted</a></li>
+
+          <li>Programs: <a href="python/us_beveridge_curve_data.ipynb">Jupyter notebook</a></li>
+          <li>Sample homework questions:</li>
+        </ul>
+
+
+      </p>
     
-  </div>
+    </div>
   </div>
 
 
