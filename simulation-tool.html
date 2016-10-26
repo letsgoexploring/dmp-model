@@ -78,11 +78,19 @@
     <div class="large-12 columns">
 
       <h4>About</h4>
-      <p>This page contains for simulating the model described in the article <em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Mortensen-Pissarides</em> by Arghya Bhattacharya, Paul Jackson, and <a href="http://www.briancjenkins.com">Brian C Jenkins</a>. The homepage for that project is at the following URL:</p>
+      <p>This page contains for simulating the model described in the article <em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Mortensen-Pissarides</em> by Arghya Bhattacharya, Paul Jackson, and <a href="http://www.briancjenkins.com">Brian C Jenkins</a>. The homepage for the project is at the following URL:</p>
 
       <p><div class="twelve columns text-center">
-        <a href="http://www.briancjenkins.com/mp-model/">http://www.briancjenkins.com/mp-model/simulation-tool.html</a>
+        <a href="http://www.briancjenkins.com/mp-model/">http://www.briancjenkins.com/mp-model</a>
       </div></p>
+
+      <br>
+      <br>
+
+      <p>To help keep this page at least somewhat self-contained, we provide a brief overview of the MP model. Click <a href="#simulation_tool">here to jump down to the simulation tool</a>.</p>
+
+      <!-- <br>
+      <br> -->
 
       <h4>Overview of the MP Model</h4>
       <p>Here we provide a quick over view of the MP model. For more details, please check out our article. We begin by assuming that the number of new hires over a given time period \(H_t\) is linked to the number of unemployed persons \(U_t\) and the number of job vacancies \(V_t\) by the matching function:
@@ -129,27 +137,8 @@
 
       <p>Steady state equilibrium in the MP model is characterized by equations \((\ref{bc})\), \((\ref{vs})\), and \((\ref{ws})\). Together, equations \((\ref{vs})\) and \((\ref{ws})\) determine the steady state values of the wage and market tightness. Then, equation \((\ref{bc})\) determines the steady state unemployment rate given steady state market tightness.</p>
 
-        <!-- The simulation is based on the transition equation for the unemployment rate:
-        \begin{align}
-          u_{t+1} & = \left(1 - A\sqrt{\theta_t} - \lambda\right) u_t + \lambda, 
-        \end{align}
-      the vacancy supply equation:
-        \begin{align}
-          \theta_t & = \left[\frac{A}{\kappa}\left( \frac{y-w_t}{\lambda}\right) }]^2,
-        \end{align}
-      and wage setting equations:
-        \begin{align}
-          w_t  = \beta y + (1-\beta) b + \beta \kappa \theta_t.
-        \end{align}
-      Note that the last two equations imply that \(w_t\) and \(\theta\) are effectively static functions of model parameters and that they are always equal to their steady state values. This means that in response to a one-time permanent change in any of the model parameters, \(w\) and \(\theta\) jump immediately to their new steady state values while the unemployment rate smoothly transitions to its new steady state values. Furthermore, the transition equation for the unemploymet rate determines the steady state relationship between the unemployment rate and market tightness:
-        \begin{align}
-          \boxed{u  = \frac{\lambda}{A\sqrt{\theta} + \lambda} }
-        \end{align}
-      We call this last expression the modified Beveridge curve. -->
-
-
   <div class="row">
-    <div class="large-12 columns">
+    <div class="large-12 columns" id="simulation_tool">
 
       <h4>Simulation Tool</h4>
 
