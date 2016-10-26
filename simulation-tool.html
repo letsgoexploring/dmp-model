@@ -26,7 +26,7 @@
     
     <meta charset="utf-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-    <title>MP model of the Labor Market</title>
+    <title>MP Model Simulation Tool</title>
 
     <link rel="stylesheet" href="css/foundation.css" />
     <link href="css/app.css" type="text/css" rel="stylesheet" />
@@ -35,6 +35,10 @@
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="http://code.highcharts.com/modules/exporting.js"></script>
     <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script type="text/x-mathjax-config">
+    //   MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+    </script>
     <script src="js/mp_model.js"></script>
     <script src="http://highslide-software.github.io/export-csv/export-csv.js"></script>
 
@@ -74,21 +78,74 @@
     <div class="large-12 columns">
 
       <h4>About</h4>
-      <p>This page contains resources accompany the paper <em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching
-Mortensen-Pissarides</em> by Arghya Bhattacharya, Paul Jackson, and <a href="http://www.briancjenkins.com">Brian C Jenkins</a>.</p>
+      <p>This page contains for simulating the model described in the article <em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Mortensen-Pissarides</em> by Arghya Bhattacharya, Paul Jackson, and <a href="http://www.briancjenkins.com">Brian C Jenkins</a>. The homepage for that project is at the following URL:</p>
 
-      <h4>Background</h4>
-      <p>The simulation is based on the transition equation for the unemployment rate:
-        $$u_{t+1}  = (1 - A\sqrt{\theta_t} - \lambda) u_t + \lambda,$$
+      <p><div class="twelve columns text-center">
+        <a href="http://www.briancjenkins.com/mp-model/">http://www.briancjenkins.com/mp-model/simulation-tool.html</a>
+      </div></p>
+
+      <h4>Overview of the MP Model</h4>
+      <p>Here we provide a quick over view of the MP model. For more details, please check out our article. We begin by assuming that the number of new hires over a given time period \(H_t\) is linked to the number of unemployed persons \(U_t\) and the number of job vacancies \(V_t\) by the matching function:
+        \begin{align}
+          H_t = A\sqrt{U_t\cdot V_t},
+        \end{align}
+      where \(A\) reflects the efficiency of the matching process. The job finding rate \(f_t\) is the fraction of unemployed workers that find jobs in the period and is given
+        \begin{align}
+          f_t & = \frac{H_t}{U_t}  = \frac{A\sqrt{U_t\cdot V_t}}{U_t} = A\sqrt{\theta_t},
+        \end{align}
+      where \(\theta \equiv V_t/U_t\) reflects <em>market tightness</em> from the perspective of firms making hiring decisions. The number of unemployed workers in period \(t+1\) is equal to the uemployed workers form period \(t\) who did not find a job plus the employed workers from period \(t\) who became separated from their jobs:
+        \begin{align}
+          U_{t+1} & = (1-f_t)U_t + \lambda E_t, 
+        \end{align}
+      where \(\lambda\) denotes reflects the exogenous separation rate. Using the matching fuction to elminimate the job finding rate and assuming that the size of the labor force is constant, rewrite the law of motion for unemployment in terms of the uemployment rate:
+        \begin{align}
+          u_{t+1} & = \left(1 - A\sqrt{\theta_t} - \lambda\right) u_t + \lambda, 
+        \end{align}
+      Then, in the steady state we have the Beveridge curve relationship expressing the steady state unemployment rate as a decreasing function of market tightness:
+        \begin{align}
+          \boxed{u  = \frac{\lambda}{A\sqrt{\theta} + \lambda} \vphantom{\bigg(}}.\label{bc}\tag{BC}
+        \end{align}
+      Equation \((\ref{bc})\) forms the first block of the MP model. In the tool below, this curve will be plotted as the downward-sloping curve in the left panel.</p>
+
+      <p>Next, the probability \(q_t\) that a firm fills a vacancy in a given period is found by using the mathing function:
+        \begin{align}
+          q_t & = \frac{H_t}{V_t}  = \frac{A\sqrt{U_t\cdot V_t}}{V_t} = \frac{A}{\sqrt{\theta_t}}.
+        \end{align}
+      A firm with a filled vacancy receives a flow profits until the job is destroyed. An employed worker produces \(y\) units of output each period and is paid a wage \(w\) and so the period profit to a firm from a filled job is \(y - w\). Firms incur a cost \(\kappa\) each period that they advertise a job vacancy. In equilibirum, firms will create new job vacancies until the expected profit from doing so falls to equal the cost of posting a vacancy:
+        \begin{align}
+          \kappa & = q_t  \left( y - w \right) \frac{1}{\lambda},
+        \end{align}
+      where \(1/\lambda\) is the expected life of filled vacancy. Substituting for \(q_t\), find the following steady state relationship between the downward-sloping relationship between market tightness and the real wage:
+        \begin{align}
+          \boxed{\theta = \left[\frac{A}{\kappa}\left( \frac{y-w}{\lambda}\right) \right]^2 \vphantom{\bigg(} }, \label{vs}\tag{VS}
+        \end{align}
+      Equation \((\ref{vs})\) forms the second block of the MP model. In the tool below, this curve will be plotted as the downward-sloping curve in the right panel.</p>
+
+      <p>Finally, the third block of the model is a steady state wage setting equation:
+        \begin{align}
+          \boxed{w = \beta (y + \theta \kappa) + (1-\beta) b \vphantom{Bigg(}}. \label{ws}\tag{WS}
+        \end{align}
+      Equation \((\ref{ws})\) captures the outcome of wage bargaining between workers and firms. Firms receive value form having a job filled equal to \(y + \theta \kappa\) beacuse the firm gets the output of the worker \(y\) and the firm <em>doesn't</em> have to incur a cost \(\theta \kappa\) to advertise a vacancy. The parameter \(b\) is the value to the worker of not being employed and reflects, among other things, the amount of unemployment benefits provided by government policy. The parameter \(\beta\in[0,1]\) reflects workers' degree of bargaining power in wage negotiations. In the tool below, Equation \((\ref{ws})\) will be plotted as the upward-sloping curve in the right panel.</p>
+
+      <p>Steady state equilibrium in the MP model is characterized by equations \((\ref{bc})\), \((\ref{vs})\), and \((\ref{ws})\). Together, equations \((\ref{vs})\) and \((\ref{ws})\) determine the steady state values of the wage and market tightness. Then, equation \((\ref{bc})\) determines the steady state unemployment rate given steady state market tightness.</p>
+
+        <!-- The simulation is based on the transition equation for the unemployment rate:
+        \begin{align}
+          u_{t+1} & = \left(1 - A\sqrt{\theta_t} - \lambda\right) u_t + \lambda, 
+        \end{align}
       the vacancy supply equation:
-        $$\theta_t  = \left[\frac{A}{\kappa}\left( \frac{y-w_t}{\lambda}\right) \right]^2,$$
+        \begin{align}
+          \theta_t & = \left[\frac{A}{\kappa}\left( \frac{y-w_t}{\lambda}\right) }]^2,
+        \end{align}
       and wage setting equations:
-        $$w_t  = \beta y + (1-\beta) b + \beta \kappa \theta_t.$$
+        \begin{align}
+          w_t  = \beta y + (1-\beta) b + \beta \kappa \theta_t.
+        \end{align}
       Note that the last two equations imply that \(w_t\) and \(\theta\) are effectively static functions of model parameters and that they are always equal to their steady state values. This means that in response to a one-time permanent change in any of the model parameters, \(w\) and \(\theta\) jump immediately to their new steady state values while the unemployment rate smoothly transitions to its new steady state values. Furthermore, the transition equation for the unemploymet rate determines the steady state relationship between the unemployment rate and market tightness:
-        $$
-        u = \frac{\lambda}{A\sqrt{\theta} + \lambda}
-        $$
-      We call this last expression the modified Beveridge curve.
+        \begin{align}
+          \boxed{u  = \frac{\lambda}{A\sqrt{\theta} + \lambda} }
+        \end{align}
+      We call this last expression the modified Beveridge curve. -->
 
 
   <div class="row">
@@ -96,7 +153,7 @@ Mortensen-Pissarides</em> by Arghya Bhattacharya, Paul Jackson, and <a href="htt
 
       <h4>Simulation Tool</h4>
 
-      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model parameters. <!-- The tool will also generate a transition path for the unemploment rate to show how the unemployment rate adjusts over time. --></p>
+      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model parameters. Select which parameter you want to change and whether you want to the chosen parameter to increase or decrease in value. To see how the unemployment rate transitions to the new steady state, select "yes" under "Show unemployment transition". Click "Submit" to see the change in the equilibrium and click "Reset" to start over. The figures can be downloaded by using the menues in the top right corners of each.</p>
 
       <!-- <form id="Options"> -->
       <form action="" method="post" id="Options">
