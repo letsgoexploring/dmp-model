@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import os,urllib
-get_ipython().magic('matplotlib inline')
+# get_ipython().magic('matplotlib inline')
 
 # You must change XPATH if you are running this script from anywhere other than the directory containing x13as.
 XPATH = os.getcwd()
@@ -429,3 +429,4 @@ plt.savefig('fig_modified_beveridge_curve_both.png',bbox_inches='tight',dpi=120)
 df_all.to_csv('beveridge_curve_data.csv',index_label='Date',float_format='%11.2f')
 df_all.to_excel(pd.ExcelWriter('beveridge_curve_data.xlsx',date_format='mm/dd/yyyy',datetime_format='mm/dd/yyyy'),index_label='Date',float_format='%11.2f')
 
+plt.show()
