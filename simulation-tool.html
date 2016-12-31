@@ -133,7 +133,7 @@
         \begin{align}
           \boxed{w = \beta (y + \theta \kappa) + (1-\beta) b \vphantom{Bigg(}}. \label{ws}\tag{WS}
         \end{align}
-      Equation \((\ref{ws})\) captures the outcome of wage bargaining between workers and firms. Firms receive value from having a job filled equal to \(y + \theta \kappa\) beacuse the firm gets the output of the worker \(y\) and the firm <em>doesn't</em> have to incur a cost \(\theta \kappa\) to advertise a vacancy. The parameter \(b\) is the value to the worker of not being employed and reflects, among other things, the amount of unemployment benefits provided by government policy. The parameter \(\beta\in[0,1]\) reflects workers' degree of bargaining power in wage negotiations. In the tool below, Equation \((\ref{ws})\) will be plotted as the upward-sloping curve in the right panel.</p>
+      Equation \((\ref{ws})\) captures the outcome of wage bargaining between workers and firms. Firms receive value from having a job filled equal to \(y + \theta \kappa\) beacuse the firm gets the output of the worker \(y\) and the firm <em>doesn't</em> have to incur a cost \(\theta \kappa\) to advertise a vacancy. The exogenous variable \(b\) is the value to the worker of not being employed and reflects, among other things, the amount of unemployment benefits provided by government policy. The exogenous variable \(\beta\in[0,1]\) reflects workers' degree of bargaining power in wage negotiations. In the tool below, Equation \((\ref{ws})\) will be plotted as the upward-sloping curve in the right panel.</p>
 
       <p>Steady state equilibrium in the MP model is characterized by equations \((\ref{bc})\), \((\ref{vs})\), and \((\ref{ws})\). Together, equations \((\ref{vs})\) and \((\ref{ws})\) determine the steady state values of the wage and market tightness. Then, equation \((\ref{bc})\) determines the steady state unemployment rate given steady state market tightness.</p>
 
@@ -142,7 +142,7 @@
 
       <h4>Simulation Tool</h4>
 
-      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model parameters. Select which parameter you want to change and whether you want to the chosen parameter to increase or decrease in value. To see how the unemployment rate transitions to the new steady state, select "yes" under "Show unemployment transition". Click "Submit" to see the change in the equilibrium and click "Reset" to start over. The figures can be downloaded by using the menus in the top right corners of each.</p>
+      <p>The tool below can be used to simulate the effect on steady state labor market equilibrium following a one-time change in one of the model's exogenous variables. Select which exogenous variable you want to change and whether you want to the chosen exogenous variable to increase or decrease in value. To see how the unemployment rate transitions to the new steady state, select "yes" under "Show unemployment transition". Click "Submit" to see the change in the equilibrium and click "Reset" to start over. The figures can be downloaded by using the menus in the top right corners of each.</p>
 
       <!-- <form id="Options"> -->
       <form action="" method="post" id="Options">
@@ -150,7 +150,7 @@
           <legend>Simulation settings</legend>
           <div class="row">
             <div class="large-5 columns">
-              <label><strong>Choose parameter to change:</strong></label>
+              <label><strong>Choose exogenous variable to change:</strong></label>
               <input type="radio" name="whichParam" value="y" id="yParam" ><label for="yParam">\(y\)</label>
               <input type="radio" name="whichParam" value="a" id="aParam"><label for="aParam">\(A\)</label>
               <input type="radio" name="whichParam" value="kappa" id="kappaParam"><label for="kappaParam">\(\kappa\)</label>

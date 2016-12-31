@@ -5,7 +5,9 @@
 # 
 # We construct monthly unemploment rate and vacancy rate series for the US from April 1929 through the most recently available date. Our methodology is based on the approach described in Petrosky-Nadeau and Zhang (2013): https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2241695
 # 
-# **This notebook must be run using Python2** because of statsmodels x13 functionality is **not compatible with Python 3**.
+# 1. **This notebook must be run using Python2** because of statsmodels x13 functionality is **not compatible with Python 3**.
+# 
+# 2. **This notebook requires the X-13ARIMA-SEATS binary**. Binaries for Windows and Linux/Unix are available from https://www.census.gov/srd/www/x13as/. To compile X-13 for Mac OS X, see the instructions here: https://github.com/christophsax/seasonal/wiki/Compiling-X-13ARIMA-SEATS-from-Source-for-OS-X.
 
 # In[1]:
 
@@ -15,7 +17,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import os,urllib
-# get_ipython().magic('matplotlib inline')
+import warnings
+warnings.filterwarnings('ignore')
+#get_ipython().magic(u'matplotlib inline')
 
 # You must change XPATH if you are running this script from anywhere other than the directory containing x13as.
 XPATH = os.getcwd()
@@ -217,6 +221,7 @@ lf_1 = pd.Series(lf_1.data,index=pd.to_datetime(lf_1.dates))
 
 # Retrieve data from Census
 dls = 'http://www.census.gov/popest/data/national/totals/pre-1980/tables/popclockest.txt'
+dls = 'https://www.census.gov/population/estimates/nation/popclockest.txt'
 urllib.urlretrieve(dls, 'popclockest.txt')
 
 # Import data and edit file
@@ -426,7 +431,5 @@ plt.savefig('fig_modified_beveridge_curve_both.png',bbox_inches='tight',dpi=120)
 # In[23]:
 
 # Export data to csv
-df_all.to_csv('beveridge_curve_data.csv',index_label='Date',float_format='%11.2f')
-df_all.to_excel(pd.ExcelWriter('beveridge_curve_data.xlsx',date_format='mm/dd/yyyy',datetime_format='mm/dd/yyyy'),index_label='Date',float_format='%11.2f')
+df_levels.to_csv('beveridge_curve_data.csv',index_label='Date',float_format='%11.2f')
 
-plt.show()
