@@ -1,2 +1,2 @@
 # mp-simulation
-Resources for the MP model.
+Resources for the MP model
