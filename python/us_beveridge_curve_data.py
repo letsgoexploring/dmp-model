@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python
 # coding: utf-8
 
 # # US Beveridge Curve Data 
@@ -11,18 +11,23 @@
 
 # In[1]:
 
+
 import statsmodels as sm
 import fredpy as fp
 import matplotlib.pyplot as plt
+plt.style.use('classic')
 import numpy as np
 import pandas as pd
 import os,urllib
 import warnings
 warnings.filterwarnings('ignore')
-#get_ipython().magic(u'matplotlib inline')
+# get_ipython().magic(u'matplotlib inline')
 
 # You must change XPATH if you are running this script from anywhere other than the directory containing x13as.
 XPATH = os.getcwd()
+
+# Load fredpy api key
+fp.api_key = fp.load_api_key('fred_api_key.txt')
 
 
 # ## Unemployment Rate
@@ -36,6 +41,7 @@ XPATH = os.getcwd()
 
 # In[2]:
 
+
 # Historical US unemployment rate from the NBER Macrohistory Database: 1929-04-01 to 1940-02-01;
 # Seasonallyadjusted
 
@@ -46,6 +52,7 @@ unemp_1 = pd.Series(unemp_1.data,index=pd.to_datetime(unemp_1.dates))
 
 
 # In[3]:
+
 
 # Historical US unemployment rate from the NBER Macrohistory Database: 1940-03-01 to 1946-12-01;
 # Seasonally  adjusted
@@ -58,6 +65,7 @@ unemp_2 = pd.Series(unemp_2.data,index=pd.to_datetime(unemp_2.dates))
 
 # In[4]:
 
+
 # Historical US unemployment rate from the NBER Macrohistory Database: 1947-01-01 to 1966-12-01;
 # Raw series is *not* seasonally adjusted
 
@@ -68,6 +76,7 @@ unemp_3 = unemp_3.window(['01-01-1947','12-01-1966'])
 # Construct a temporary series to use for the seasonal adjustment
 temp_series = pd.DataFrame(unemp_3.data,index=pd.to_datetime(unemp_3.dates))
 
+temp_series
 # Run x13_arima_analysis to obtain SA unemployment data.
 x13results = sm.tsa.x13.x13_arima_analysis(endog = temp_series,x12path=XPATH, outlier=False,print_stdout=True)
 
@@ -77,6 +86,7 @@ unemp_3 = unemp_3[(unemp_3.index>=pd.to_datetime('01-01-1947')) & (unemp_3.index
 
 # In[5]:
 
+
 # US civilian unemployment rate from the BLS: 1948-01-01 to most recent;
 # Seasonally  adjusted
 unemp_4 = fp.series('UNRATE')
@@ -85,6 +95,7 @@ unemp_4 = pd.Series(unemp_4.data,index=pd.to_datetime(unemp_4.dates))
 
 
 # In[6]:
+
 
 # Concatenate the series
 unemployment_rate_series = unemp_1.append(unemp_2).sort_index()
@@ -112,6 +123,7 @@ plt.savefig('fig_data_unrate.png',bbox_inches='tight',dpi=120)
 
 # In[7]:
 
+
 # Met life help-wanted index: 1919-01-01 to 1960-08-01;
 # Not seasonally adjusted
 
@@ -128,6 +140,7 @@ vac_1 = vac_1[(vac_1.index>=pd.to_datetime('04-01-1929')) ]
 
 # In[8]:
 
+
 # Composite help-wanted index from Regis Barnichon's site: https://sites.google.com/site/regisbarnichon;
 # Seasonally adjusted
 
@@ -135,11 +148,12 @@ vac_1 = vac_1[(vac_1.index>=pd.to_datetime('04-01-1929')) ]
 dls = 'https://sites.google.com/site/regisbarnichon/cv/HWI_index.txt?attredirects=0'
 urllib.urlretrieve(dls, 'HWI_index.txt')
 
-vac_2 = pd.read_csv('HWI_index.txt',delimiter='\t',skiprows=5)
+vac_2 = pd.read_csv('HWI_index.txt',delimiter='\t',skiprows=6)
+vac_2.columns = ['Date','composite HWI']
 
 # Manage dates
 dates = []
-for d in vac_2['Date ']:
+for d in vac_2['Date']:
     dates.append(d[-2:]+'-01-'+d[0:4])
 
 vac_2 = pd.Series(vac_2['composite HWI'].values,index = pd.to_datetime(dates))
@@ -151,6 +165,7 @@ vac_2 = scaling* vac_2
 
 
 # In[9]:
+
 
 # Job Openings and Labor Turnover Survey (JOLTS) : December 1, 2000 to present
 # Seasonally adjusted
@@ -165,6 +180,7 @@ vac_3 = scaling* vac_3
 
 
 # In[10]:
+
 
 # Truncate each series
 vac_1 = vac_1.loc[:'12-01-1959']
@@ -182,6 +198,7 @@ ax.grid()
 
 
 # In[11]:
+
 
 # Create the vacancy series
 vacancy_series_unscaled = vac_1.append(vac_2).sort_index()
@@ -206,6 +223,7 @@ plt.savefig('fig_data_vacancies.png',bbox_inches='tight',dpi=120)
 
 # In[12]:
 
+
 # Civilian labor force over 16 years of age in thousands of persons: January 1948 to present;
 # Seasonally adjusted
 lf_1 = fp.series('CLF16OV')
@@ -214,6 +232,7 @@ lf_1 = pd.Series(lf_1.data,index=pd.to_datetime(lf_1.dates))
 
 
 # In[13]:
+
 
 # Historical National Population Estimates:  July 1, 1900 to July 1, 1999
 # Source: Population Estimates Program, Population Division, U.S. Census Bureau
@@ -267,6 +286,7 @@ lf_2 = scaling*lf_2[(lf_2.index>=pd.to_datetime('1929-04-01')) & (lf_2.index<pd.
 
 # In[14]:
 
+
 # Plot the two truncated and scaled series to verify that they line up
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
@@ -279,6 +299,7 @@ fig.tight_layout()
 
 
 # In[15]:
+
 
 # form the labor force series
 labor_force_series = lf_1.append(lf_2).sort_index()
@@ -301,6 +322,7 @@ plt.savefig('fig_data_labor_force.png',bbox_inches='tight',dpi=120)
 
 # In[16]:
 
+
 # Construct the vacancy_rate series
 vacancy_rate_series = vacancy_series_unscaled / labor_force_series
 
@@ -315,6 +337,7 @@ market_tightness_series = vacancy_series/unemployment_series
 
 
 # In[17]:
+
 
 # plot the series and save the figure
 fig = plt.figure()
@@ -333,6 +356,7 @@ plt.savefig('fig_data_vacancy_rate.png',bbox_inches='tight',dpi=120)
 
 # In[18]:
 
+
 # Organize data into DataFrames
 df_rates = pd.concat([unemployment_rate_series,vacancy_rate_series,market_tightness_series], join='outer', axis = 1).dropna()
 df_rates.columns = ['Unemployment rate','Vacancy rate','Market tightness']
@@ -349,6 +373,7 @@ df_post_gr = df_all[(df_all.index>= '12-01-2007')]
 
 # In[19]:
 
+
 # plot the labor market tightness series and save the figure
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
@@ -363,6 +388,7 @@ plt.savefig('fig_data_market_tightness.png',bbox_inches='tight',dpi=120)
 
 
 # In[20]:
+
 
 # Plot the Beveridge curve for the US: vacancy rate v unemployment rate
 
@@ -382,6 +408,7 @@ plt.savefig('fig_beveridge_curve.png',bbox_inches='tight',dpi=120)
 
 # In[21]:
 
+
 # Plot the modified Beveridge curve for the US: market tightness v unemployment rate
 
 fig = plt.figure(figsize=(6,4))
@@ -399,6 +426,7 @@ plt.savefig('fig_modified_beveridge_curve.png',bbox_inches='tight',dpi=120)
 
 
 # In[22]:
+
 
 # Construct figure for paper
 
@@ -429,6 +457,7 @@ plt.savefig('fig_modified_beveridge_curve_both.png',bbox_inches='tight',dpi=120)
 
 
 # In[23]:
+
 
 # Export data to csv
 df_levels.to_csv('beveridge_curve_data.csv',index_label='Date',float_format='%11.2f')
