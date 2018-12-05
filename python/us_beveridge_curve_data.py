@@ -21,7 +21,7 @@ import pandas as pd
 import os,urllib
 import warnings
 warnings.filterwarnings('ignore')
-# get_ipython().magic(u'matplotlib inline')
+get_ipython().magic(u'matplotlib inline')
 
 # You must change XPATH if you are running this script from anywhere other than the directory containing x13as.
 XPATH = os.getcwd()
@@ -331,8 +331,8 @@ scaling = vacancy_rate_series[(vacancy_rate_series.index>=pd.to_datetime('1965-0
 
 vacancy_rate_series = 100*vacancy_rate_series/scaling
 
-vacancy_series = vacancy_rate_series*labor_force_series
-unemployment_series = unemployment_rate_series*labor_force_series
+vacancy_series = vacancy_rate_series*labor_force_series/100
+unemployment_series = unemployment_rate_series*labor_force_series/100
 market_tightness_series = vacancy_series/unemployment_series
 
 
@@ -446,9 +446,14 @@ ax = fig.add_subplot(1,2,2)
 c = np.arange(len(df_post_gr.index))
 
 plt.scatter(df_post_gr['Unemployment rate'].values,df_post_gr['Market tightness'].values,s=75,alpha = 0.5,c=c)
+
+cbar = plt.colorbar(ax = ax)
+cbar.set_ticks([int(i) for i in cbar.get_ticks()])
+cbar.set_ticklabels([df_post_gr.index[int(i)].strftime('%b %Y') for i in cbar.get_ticks()])
+
 plt.plot(df_post_gr['Unemployment rate'].values,df_post_gr['Market tightness'].values,'-')
 
-ax.set_title(df_post_gr.index[0].strftime('%B %Y')+' to '+df_post_gr.index[-1].strftime('%B %Y'))
+ax.set_title(df_post_gr.index[0].strftime('%b %Y')+' to '+df_post_gr.index[-1].strftime('%B %Y'))
 ax.set_xlabel('Unemployment rate ($u$)')
 ax.set_ylabel('Market tightness ($\\theta$)')
 ax.grid()
