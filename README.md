@@ -1,2 +1,2 @@
-# mp-simulation
-Resources for the MP model.
+# DMP Model
+Resources for the DMP model.
