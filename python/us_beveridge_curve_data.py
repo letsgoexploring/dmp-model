@@ -5,7 +5,7 @@
 # 
 # We construct monthly unemploment rate and vacancy rate series for the US from April 1929 through the most recently available date. Our methodology is based on the approach described in Petrosky-Nadeau and Zhang (2013): https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2241695
 # 
-# 1. **This notebook must be run using Python2** because of statsmodels x13 functionality is **not compatible with Python 3**.
+# 1. This Notebook is compatible with Python 2 and 3.
 # 
 # 2. **This notebook requires the X-13ARIMA-SEATS binary**. Binaries for Windows and Linux/Unix are available from https://www.census.gov/srd/www/x13as/. To compile X-13 for Mac OS X, see the instructions here: https://github.com/christophsax/seasonal/wiki/Compiling-X-13ARIMA-SEATS-from-Source-for-OS-X.
 
@@ -21,7 +21,7 @@ import pandas as pd
 import os,urllib
 import warnings
 warnings.filterwarnings('ignore')
-get_ipython().magic(u'matplotlib inline')
+get_ipython().run_line_magic('matplotlib', 'inline')
 
 # You must change XPATH if you are running this script from anywhere other than the directory containing x13as.
 XPATH = os.getcwd()
@@ -47,8 +47,7 @@ fp.api_key = fp.load_api_key('fred_api_key.txt')
 
 # Download from FRED and save as a Pandas series
 unemp_1 = fp.series('M0892AUSM156SNBR')
-unemp_1 = unemp_1.window(['04-01-1929','02-01-1940'])
-unemp_1 = pd.Series(unemp_1.data,index=pd.to_datetime(unemp_1.dates))
+unemp_1 = unemp_1.window(['04-01-1929','02-01-1940']).data
 
 
 # In[3]:
@@ -59,8 +58,7 @@ unemp_1 = pd.Series(unemp_1.data,index=pd.to_datetime(unemp_1.dates))
 
 # Download from FRED and save as a Pandas series
 unemp_2 = fp.series('M0892BUSM156SNBR')
-unemp_2 = unemp_2.window(['03-01-1940','12-01-1946'])
-unemp_2 = pd.Series(unemp_2.data,index=pd.to_datetime(unemp_2.dates))
+unemp_2 = unemp_2.window(['03-01-1940','12-01-1946']).data
 
 
 # In[4]:
@@ -71,16 +69,12 @@ unemp_2 = pd.Series(unemp_2.data,index=pd.to_datetime(unemp_2.dates))
 
 # Download from FRED
 unemp_3 = fp.series('M0892CUSM156NNBR')
-unemp_3 = unemp_3.window(['01-01-1947','12-01-1966'])
+unemp_3 = unemp_3.window(['01-01-1947','12-01-1966']).data
 
-# Construct a temporary series to use for the seasonal adjustment
-temp_series = pd.DataFrame(unemp_3.data,index=pd.to_datetime(unemp_3.dates))
-
-temp_series
 # Run x13_arima_analysis to obtain SA unemployment data.
-x13results = sm.tsa.x13.x13_arima_analysis(endog = temp_series,x12path=XPATH, outlier=False,print_stdout=True)
+x13results = sm.tsa.x13.x13_arima_analysis(endog = unemp_3,x12path=XPATH, outlier=False,print_stdout=True)
 
-unemp_3 = pd.Series(x13results.seasadj.values,index=pd.to_datetime(unemp_3.dates))
+unemp_3 = pd.Series(x13results.seasadj.values,index=unemp_3.index)
 unemp_3 = unemp_3[(unemp_3.index>=pd.to_datetime('01-01-1947')) & (unemp_3.index<=pd.to_datetime('12-01-1947'))]
 
 
@@ -90,8 +84,7 @@ unemp_3 = unemp_3[(unemp_3.index>=pd.to_datetime('01-01-1947')) & (unemp_3.index
 # US civilian unemployment rate from the BLS: 1948-01-01 to most recent;
 # Seasonally  adjusted
 unemp_4 = fp.series('UNRATE')
-unemp_4 = unemp_4.window(['01-01-1948','01-01-2200'])
-unemp_4 = pd.Series(unemp_4.data,index=pd.to_datetime(unemp_4.dates))
+unemp_4 = unemp_4.window(['01-01-1948','01-01-2200']).data
 
 
 # In[6]:
@@ -105,12 +98,12 @@ unemployment_rate_series = unemployment_rate_series.append(unemp_4).sort_index()
 # plot the series and save the figure
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
-ax.plot_date(unemployment_rate_series.index,unemployment_rate_series.values,'-',lw=4,alpha = 0.65)
+ax.plot(unemployment_rate_series,'-',lw=4,alpha = 0.65)
 ax.set_ylabel('Percent')
 ax.grid()
 
 fig.tight_layout()
-plt.savefig('fig_data_unrate.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_data_unrate.png',bbox_inches='tight',dpi=120)
 
 
 # 
@@ -127,14 +120,14 @@ plt.savefig('fig_data_unrate.png',bbox_inches='tight',dpi=120)
 # Met life help-wanted index: 1919-01-01 to 1960-08-01;
 # Not seasonally adjusted
 
-vac_1 = fp.series('M0882AUSM349NNBR')
+vac_1 = fp.series('M0882AUSM349NNBR').data
 
-temp_series = pd.Series(vac_1.data,index=pd.to_datetime(vac_1.dates))
+# temp_series = pd.Series(vac_1.data,index=pd.to_datetime(vac_1.dates))
 
 # Run x13_arima_analysis to obtain SA vacancy rate data.
-x13results = sm.tsa.x13.x13_arima_analysis(endog = temp_series,x12path=XPATH, outlier=False,print_stdout=True)
+x13results = sm.tsa.x13.x13_arima_analysis(endog = vac_1,x12path=XPATH, outlier=False,print_stdout=True)
 
-vac_1 = pd.Series(x13results.seasadj.values,index=pd.to_datetime(vac_1.dates))
+vac_1 = pd.Series(x13results.seasadj.values,index=vac_1.index)
 vac_1 = vac_1[(vac_1.index>=pd.to_datetime('04-01-1929')) ]
 
 
@@ -146,9 +139,12 @@ vac_1 = vac_1[(vac_1.index>=pd.to_datetime('04-01-1929')) ]
 
 # Import data from Regis Barnichon's site
 dls = 'https://sites.google.com/site/regisbarnichon/cv/HWI_index.txt?attredirects=0'
-urllib.urlretrieve(dls, 'HWI_index.txt')
+try:
+    urllib.urlretrieve(dls, '../txt/HWI_index.txt')
+except:
+    urllib.request.urlretrieve(dls, '../txt/HWI_index.txt')
 
-vac_2 = pd.read_csv('HWI_index.txt',delimiter='\t',skiprows=6)
+vac_2 = pd.read_csv('../txt/HWI_index.txt',delimiter='\t',skiprows=6)
 vac_2.columns = ['Date','composite HWI']
 
 # Manage dates
@@ -170,8 +166,7 @@ vac_2 = scaling* vac_2
 # Job Openings and Labor Turnover Survey (JOLTS) : December 1, 2000 to present
 # Seasonally adjusted
 
-vac_3 = fp.series('JTSJOL')
-vac_3 = pd.Series(vac_3.data,index=pd.to_datetime(vac_3.dates))
+vac_3 = fp.series('JTSJOL').data
 
 # Compute a scaling factor to ensure that the December 1, 2000 values of the first vacancy series match 
 # the second.
@@ -190,9 +185,9 @@ vac_3 = vac_3.loc['01-01-2001':]
 # Plot the three truncated and scaled series to verify that they line up
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
-ax.plot_date(vac_1.index,vac_1.values,'-',lw=3,alpha = 0.65)
-ax.plot_date(vac_2.index,vac_2.values,'-',lw=3,alpha = 0.65)
-ax.plot_date(vac_3.index,vac_3.values,'-',lw=3,alpha = 0.65)
+ax.plot(vac_1,'-',lw=3,alpha = 0.65)
+ax.plot(vac_2,'-',lw=3,alpha = 0.65)
+ax.plot(vac_3,'-',lw=3,alpha = 0.65)
 ax.set_title('Vacancies (unscaled)')
 ax.grid()
 
@@ -212,7 +207,7 @@ ax.set_title('Vacancies (unscaled)')
 ax.grid()
 
 fig.tight_layout()
-plt.savefig('fig_data_vacancies.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_data_vacancies.png',bbox_inches='tight',dpi=120)
 
 
 # ## Labor force data
@@ -227,8 +222,7 @@ plt.savefig('fig_data_vacancies.png',bbox_inches='tight',dpi=120)
 # Civilian labor force over 16 years of age in thousands of persons: January 1948 to present;
 # Seasonally adjusted
 lf_1 = fp.series('CLF16OV')
-lf_1 = lf_1.window(['01-01-1800','06-01-2216'])
-lf_1 = pd.Series(lf_1.data,index=pd.to_datetime(lf_1.dates))
+lf_1 = lf_1.window(['01-01-1800','06-01-2216']).data
 
 
 # In[13]:
@@ -241,10 +235,14 @@ lf_1 = pd.Series(lf_1.data,index=pd.to_datetime(lf_1.dates))
 # Retrieve data from Census
 dls = 'http://www.census.gov/popest/data/national/totals/pre-1980/tables/popclockest.txt'
 dls = 'https://www.census.gov/population/estimates/nation/popclockest.txt'
-urllib.urlretrieve(dls, 'popclockest.txt')
+
+try:
+    urllib.urlretrieve(dls, '../txt/popclockest.txt')
+except:
+    urllib.request.urlretrieve(dls, '../txt/popclockest.txt')
 
 # Import data and edit file
-with open('popclockest.txt','r') as newfile:
+with open('../txt/popclockest.txt','r') as newfile:
     lines = newfile.readlines()
     
 # Remove leading and trailing whitespace and overwrite spaces in with tabs in lines
@@ -290,8 +288,8 @@ lf_2 = scaling*lf_2[(lf_2.index>=pd.to_datetime('1929-04-01')) & (lf_2.index<pd.
 # Plot the two truncated and scaled series to verify that they line up
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
-ax.plot_date(lf_2.index,lf_2,'-',lw=3,alpha = 0.65)
-ax.plot_date(lf_1.index,lf_1,'-',lw=3,alpha = 0.65)
+ax.plot(lf_2,'-',lw=3,alpha = 0.65)
+ax.plot(lf_1,'-',lw=3,alpha = 0.65)
 ax.set_title('Labor force')
 ax.grid()
 
@@ -307,13 +305,13 @@ labor_force_series = lf_1.append(lf_2).sort_index()
 # plot the series and save the figure
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
-ax.plot_date(labor_force_series.index,labor_force_series/1000,'-',lw=4,alpha = 0.65)
+ax.plot(labor_force_series/1000,'-',lw=4,alpha = 0.65)
 ax.set_title('Labor force')
 ax.set_ylabel('Millions of persons')
 ax.grid()
 
 fig.tight_layout()
-plt.savefig('fig_data_labor_force.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_data_labor_force.png',bbox_inches='tight',dpi=120)
 
 
 # ## Vacancy rate
@@ -342,12 +340,12 @@ market_tightness_series = vacancy_series/unemployment_series
 # plot the series and save the figure
 fig = plt.figure()
 ax = fig.add_subplot(1,1,1)
-ax.plot_date(vacancy_rate_series.index,vacancy_rate_series,'-',lw=4,alpha = 0.65)
+ax.plot(vacancy_rate_series,'-',lw=4,alpha = 0.65)
 ax.set_ylabel('Vacancy rate')
 ax.grid()
 
 fig.tight_layout()
-plt.savefig('fig_data_vacancy_rate.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_data_vacancy_rate.png',bbox_inches='tight',dpi=120)
 
 
 # ## Organize data
@@ -384,7 +382,7 @@ ax.set_ylim([0,5])
 ax.grid()
 
 fig.tight_layout()
-plt.savefig('fig_data_market_tightness.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_data_market_tightness.png',bbox_inches='tight',dpi=120)
 
 
 # In[20]:
@@ -403,7 +401,7 @@ ax.set_xlabel('Unemployment rate')
 ax.set_ylabel('Vacancy rate')
 ax.grid()
 
-plt.savefig('fig_beveridge_curve.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_beveridge_curve.png',bbox_inches='tight',dpi=120)
 
 
 # In[21]:
@@ -422,7 +420,7 @@ ax.set_xlabel('Unemployment rate ($\%$)')
 ax.set_ylabel('Market tightness ($\\theta$)')
 ax.grid()
 
-plt.savefig('fig_modified_beveridge_curve.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_modified_beveridge_curve.png',bbox_inches='tight',dpi=120)
 
 
 # In[22]:
@@ -458,12 +456,12 @@ ax.set_xlabel('Unemployment rate ($u$)')
 ax.set_ylabel('Market tightness ($\\theta$)')
 ax.grid()
 
-plt.savefig('fig_modified_beveridge_curve_both.png',bbox_inches='tight',dpi=120)
+plt.savefig('../img/fig_modified_beveridge_curve_both.png',bbox_inches='tight',dpi=120)
 
 
 # In[23]:
 
 
 # Export data to csv
-df_levels.to_csv('beveridge_curve_data.csv',index_label='Date',float_format='%11.2f')
+df_levels.to_csv('../csv/beveridge_curve_data.csv',index_label='Date',float_format='%11.2f')
 
