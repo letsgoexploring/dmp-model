@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="favicon/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="favicon/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="favicon/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="favicon/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="favicon/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="favicon/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="favicon/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="favicon/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="favicon/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="favicon/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="favicon/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="favicon/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="favicon/mstile-310x310.png" />
+
+    
+    <meta charset="utf-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching
+Diamond-Mortensen-Pissarides</title>
+
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link href="css/app.css" type="text/css" rel="stylesheet" />
+    
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+  </head>
+  <body>
+    
+    <div class="row">
+      <div class="large-3 columns">
+      </div>
+      <div class="large-9 columns">
+        <ul class="button-group right">
+          <li><a href="https://www.briancjenkins.com" class="button">Brian C Jenkins</a></li>
+          <li><a href="https://www.briancjenkins.com/teaching" class="button">Teaching</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <h3>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Diamond-Mortensen-Pissarides</em></h3>
+        <hr>
+      </div>
+    </div>
+ 
+
+  <div class="row">
+    <div class="large-12 columns">
+
+      <h4>About</h4>
+      <p>This page contains resources to accompany the article <em>Revisiting Unemployment in Intermediate Macroeconomics: A New Approach for Teaching Diamond-Mortensen-Pissarides</em> by Arghya Bhattacharya, Paul Jackson, and <a href="https://www.briancjenkins.com">Brian C Jenkins</a>. In our article, we present a simplified version of the model of Diamond, Mortensen, and Pissarides' model of unemployment that is accessible to undergraduates and preserves the dynamic structure of the original model. For brevity, we refer to the model as the <em>DMP model</em>.</p>
+
+      <p>Below you will find a link to Beveridge curve data for the US, Python code used to produce the dataset, some sample emprical homework problems based on the Beveridge curve data, and a link to a web-based tool that students can use to analyze equilibrium in the DMP model.</p>
+    
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+
+      <h4>Supplemental Materials</h4>
+      <p>
+        <ul>
+          <li>Online Appendix: <a href="pdf/DMP_Model_Online_Appendix.pdf">DMP_Model_Online_Appendix.pdf</a></li>
+          <li>Sample homework questions: Available to instructors on request</li>
+        </ul>
+      </p>
+    
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="large-12 columns">
+
+      <h4>Beveridge Curve Data</h4>
+      <p>In Figure 3 of our article, we present the following plot of Beveridge curve data for the US replicated from <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2241695">Petrosky-Nadeau and Zhang's (2014) article</a>:</p>
+
+      <div class="twelve columns text-center">
+        <a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/dmp/png/fig_modified_beveridge_curve_both.png"><img src="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/dmp/png/fig_modified_beveridge_curve_both.png"style="width: 50%; height: 50%"/></a>
+      </div>
+
+
+      <p>The figure is a plot of labor market tightness against the unemployment rate for the US for each month from April 1929 through September 2018. <em>Market tightness</em> is the ratio of job vacancies to unemployed persons. The downward-sloping relationship between market tightness and the unemployment rate is a key prediction of the DMP model and this figure provides important empirical justification for the model.</p>
+
+      <p>
+
+        <ul>
+          <li>Data: <a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/dmp/csv/beveridge_curve_data.csv"> csv formatted</a>.</li>
+          <li>Data sources and construction: See Appendix A of <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2241695">Petrosky-Nadeau and Zhang's (2014) article</a></li>
+          <li>Program: <a href="https://nbviewer.jupyter.org/github/letsgoexploring/economic-data/blob/master/dmp/python/us_beveridge_curve_data.ipynb" target="_blank">Jupyter notebook</a> or <a href="https://raw.githubusercontent.com/letsgoexploring/economic-data/master/dmp/python/us_beveridge_curve_data.py">Python script</a>. X-13ARIMA-SEATS Seasonal Adjustment Program is required. X-13 binaries are available <a href="https://www.census.gov/srd/www/x13as/">here</a>. See <a href="https://github.com/christophsax/seasonal/wiki/Compiling-X-13ARIMA-SEATS-from-Source-for-OS-X">this page</a> for instructions on compiling X-13 for Mac OS X.</li>
+        </ul>
+
+      </p>
+    
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+
+      <h4>Simulation Tool</h4>
+      <p>The DMP model has many moving parts and determining how the equilibrium adjusts following a change in an exogenous variable can be challenging at first. We've created a web-based <a href="simulation-tool.html">simulation tool</a> that students can use to practice working with the DMP model. The tool is available at the following URL:</p>
+
+      <p><div class="twelve columns text-center">
+        <a href="https://www.briancjenkins.com/dmp-model/simulation-tool.html">https://www.briancjenkins.com/dmp-model/simulation-tool.html</a>
+      </div></p>
+
+      </br>
+      </br>
+
+      <p>The tool enables students to quickly perform counterfactual experiments within the DMP model. Students can choose which exogenous variable of the model they would like to change and how and then they can immediately see how the three curves of the model shift and how the steady state equilibrium changes. There is an option to see the dynamic transition of the unemployment rate to the new steady state. Furthermore, the figures produced by the tool are downloadable in several standard image formats that can be included in a homework assignment if so requested by an instructor. The image below is a screenshot of the tool in action:</p>
+
+      <div class="twelve columns text-center">
+        <a href="img/simulation_tool.png"><img src="img/simulation_tool.png"style="width: 66.7%; height: 66.7%"/></a>
+      </div>
+
+    
+    </div>
+  </div>
+
+
+ 
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr/>
+      <div class="row">
+        <div class="large-12 columns">
+          <p>Created by Arghya Bhattacharya, Paul Jackson, and <a href="https://www.briancjenkins.com">Brian C Jenkins</a> in collaboration with Guillaume Rocheteau of the Department of Economics, UC Irvine. Please send feedback to Brian by <a href="mailto:bcjenkin@uci.edu">email.</a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+    
+  </body>
+</html>
